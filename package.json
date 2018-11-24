@@ -1,0 +1,21 @@
+{
+  "name": "csquiz",
+  "version": "1.0.0",
+  "description": "CSQuiz application for hackathon contest",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "start-client": "npm run start --prefix client"
+  },
+  "author": "Tran Ngoc Tin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.5",
+    "express": "^4.16.4",
+    "js-md5": "^0.7.3",
+    "jsonwebtoken": "^8.4.0",
+    "mongoose": "^5.3.13"
+  }
+}

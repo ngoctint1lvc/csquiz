@@ -1,0 +1,163 @@
+// Note:
+// - u1, u2 bieu thi cho id cua user
+// - p1, p2 la id cua cac bai post (bai viet)
+// - cm1, cm2 la id cac comment
+// ... tuong tu
+
+// ------------------------------------------
+
+// users
+[
+    {
+        "id": "u1",
+        "username": "ngoctin",
+        "role": "admin",
+        "display_name": "Tran Ngoc Tin",
+        "password": "hash-md5(password)",
+        "date_created": "timestamp",
+        "points": 0,
+        "bookmarks": [
+            { "postid": "p1" },
+            { "postid": "p2" },
+            { "postid": "p3" }
+        ],
+        "posts": [
+            { "postid": "p1" }
+        ],
+        "likes": 0,
+        "avatar": "/path/to/avatar.jpg",
+        "email": "ngoctin@gmail.com",
+        "gender": "male"
+    },
+    {
+        "id": "u2",
+        "username": "tuanvu",
+        "role": "user",
+        "display_name": "Dang Tuan Vu",
+        "password": "hash-md5(password)",
+        "date_created": "timestamp",
+        "points": 0,
+        "bookmarks": [
+            { "postid": "p2" },
+            { "postid": "p3" }
+        ],
+        "posts": [
+            { "postid": "p3" }
+        ],
+        "likes": 0,
+        "avatar": "/path/to/avatar.jpg",
+        "email": "tuanvu@gmail.com",
+        "gender": "male"
+    }
+]
+
+// login_user (use to check current login users)
+[
+    {
+        "username": "ngoctin",
+        "access_token": "MTIzNGprZGpma2Rhago",
+        "expires": 12342    // time in seconds
+    },
+    {
+        "username": "tuanvu",
+        "access_token": "ZmphbHNrMWwyMzIxZj0K",
+        "expires": 12342    // time in seconds
+    }
+]
+
+
+// posts
+[
+    {
+        "id": "p1",
+        "username": "u1",
+        "name": "C++ tutorial",
+        "description": "This is a quick tutorial to teach you how to program c++",
+        "content": "/path/to/file.html",
+        "category": "programming",
+        "likes": [
+            { "userid": "u1" },
+            { "userid": "u2" }
+        ],
+        "comments": [
+            { "commentid": "cm1" },
+            { "commentid": "cm2" }
+        ],
+        "date_created": "timestamp"
+    }
+]
+
+// comments
+[
+    {
+        "id": "cm1",
+        "userid": "u1",
+        "content": "this is comment1!",
+        "date_created": "timestamp",
+        "date_modified": "timestamp",
+        "postid": "p1",
+        "subcomments": [
+            { "commentid": "cm3" },
+            { "commentid": "cm4" }
+        ]
+    },
+    {
+        "id": "cm2",
+        "userid": "u2",
+        "content": "this is comment2!",
+        "date_created": "timestamp",
+        "date_modified": "timestamp",
+        "postid": "p1",
+        "subcomments": [
+            { "commentid": "cm5" }
+        ]
+    },
+    {
+        "id": "cm3",
+        "userid": "u2",
+        "content": "this is comment3!",
+        "date_created": "timestamp",
+        "date_modified": "timestamp",
+        "postid": null,
+        "subcomments": [],
+        "parent_comment": "cm1"
+    }
+]
+
+// categories
+[
+    {
+        "id": "ca1",
+        "name": "programming",
+        "description": "programming",
+        "image": "img1"
+    },
+    {
+        "id": "ca2",
+        "name": "web",
+        "description": "web",
+        "image": "img2"
+    },
+    {
+        "id": "ca3",
+        "name": "networking",
+        "description": "networking",
+        "image": "img3"
+    },
+    {
+        "id": "ca4",
+        "name": "dsa",
+        "description": "dsa",
+        "image": "img4"
+    }
+]
+
+// images
+[
+    {
+        "id": "img1",
+        "path": "/path/to/image1.jpg",
+        "name": "image name",
+        "description": ""
+    }
+]

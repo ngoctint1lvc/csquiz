@@ -1,0 +1,124 @@
+Ten app: CSQuiz
+
+1. Cac tinh nang:
+
+- Dang bai viet
+- Xem bai viet
+- Comment bai viet
+- News feed
+- Chat
+- Phan loai bai viet theo chu de
+- Dat cau hoi
+- Bookmark bai viet de xem sau
+- Ranking cac thanh vien noi bat
+- Trang ca nhan nguoi dung
+
+2. Specification
+2.1. Dang bai
+  - Chi login moi dc dang bai
+  - Bai viet duoc phan loai 1 chu de
+2.2. Xem bai viet
+  - Ko login van xem bai duoc
+  - Nguoi dung da login co the ranking bai viet
+2.3. Comment bai viet
+  - Nguoi dung login dc phep comment, danh gia bai viet (tu 0 toi 5 sao)
+  - Doi voi cau hoi thi cau tra loi co the duoc tick neu tra loi dung vao van de dang hoi va solution works (giong stack overflow).
+  - Cau tra loi, binh luan chi duoc long nhau toi da 2 level
+2.4. News feed
+  - Chi cac bai viet huong dan moi duoc dang len news feed (not questions)
+2.5. Chat
+2.6. Phan loai bai viet theo chu de
+  - Cac chu de bao gom: programming languages, ppl, networking, other, ...
+2.7. Dat cau hoi
+  - Cau hoi 
+2.8. Bookmark bai viet de xem sau
+2.9. Ranking cac thanh vien noi bat
+  - Ranking dua theo diem:
+   + 1 like = 1 point
+   + 1 post = 5 points
+   + 1 dislike = -1 points
+2.10. Trang ca nhan nguoi dung
+  - Moi nguoi dung co 1 anh dai dien, duoc hien tren cac comment va bai viet dang
+  - Tren trang ca nhan hien len toan bo thong tin nguoi dung bao gom: username, ngay tham gia,
+    so bai viet, so luot thich, link toi nhung bai viet cua user nay
+
+https://wireframe.cc/eP8b1P	: login screen
+https://wireframe.cc/eac5Uw	: register screen
+https://wireframe.cc/5Ll6xl	: main menu
+
+
+https://forum.endiliey.com/
+
+
+hackathon mongodb connection string:
+mongodb://ngoctin:iamtranngoctin@hackathon-shard-00-00-l01pt.mongodb.net:27017,hackathon-shard-00-01-l01pt.mongodb.net:27017,hackathon-shard-00-02-l01pt.mongodb.net:27017/test?ssl=true&replicaSet=hackathon-shard-0&authSource=admin&retryWrites=true
+
+
+----------------- Api reference -----------------------
+
+Response code:
+200: Success
+400: Missing/Invalid params
+401: Unauthorized
+404: Content not found
+500: Server error
+
+1. Api dung de login va get access_token, access_token nay duoc set vao cookie cua browser
+POST /user/login
+- request
+{
+  username*: String,
+  password*: String
+}
+
+2. Api dung de dang ky user
+POST /user/register
+- request
+{
+  username*: String,
+  password*: String,
+  display_name: String
+}
+
+3. Api dung de xem thong tin tai khoan
+POST /user/me
+- request
+{
+  access_token*: String (nhan duoc sau khi login bang api /user/login)
+}
+
+4. Update user information
+POST /user/update
+{
+  access_token*: String (nhan duoc sau khi login bang api /user/login)
+}
+
+5. Upload image
+POST /image/upload
+{
+  access_token*: String (nhan duoc sau khi login bang api /user/login),
+  image*: File (png, jpg, jpeg),
+  description: String
+}
+
+6. Get post
+GET /post/:id
+
+7. Add post
+POST /post/add
+{
+  access_token*: String (nhan duoc sau khi login bang api /user/login),
+  name*: String,
+  content*: String (html),
+  category*: String,
+  description: String
+}
+
+8. Get list of post id by category
+GET /post/category/:name&limit=100 (auto no-limited)
+
+9. Get list of categories
+GET /category
+
+10. Get image
+GET /image/:id
