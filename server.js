@@ -10,6 +10,7 @@ const apiUserRegister = require('./routes/user/register');
 const apiUserInfo = require('./routes/user/me');
 const apiPost = require('./routes/post/post');
 const apiCategory = require('./routes/category/category');
+const apiImage = require('./routes/image/image')
 
 app.use(bodyParser.json());
 app.use(cors());
